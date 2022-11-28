@@ -43,7 +43,7 @@ describe("GET /tickets/types", () => {
   });
 
   describe("when token is valid", () => {
-    it("should respond with empty array when there are no hotels registered", async () => {
+    it("should respond with empty array when there are no ticket types created", async () => {
       const token = await generateValidToken();
 
       const response = await server.get("/tickets/types").set("Authorization", `Bearer ${token}`);

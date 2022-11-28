@@ -23,7 +23,9 @@ async function listHotelsAfterPayment(userId: number) {
 async function listHotelWithRooms(userId: number, hotelId: number) {
   if(!await hasHotelTicket(userId)) return;
 
-  const hotel = await hotelsRepository.findHotelRoomsById(hotelId); 
+  const hotel = await hotelsRepository.findHotelRoomsById(hotelId);
+  if(!hotel) throw notFoundError();
+  
   return hotel;
 }
 
