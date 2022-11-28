@@ -28,7 +28,7 @@ export async function getHotelRooms(req: AuthenticatedRequest, res: Response) {
     return res.status(httpStatus.OK).send(hotel);
   } catch (error) {
     if (error.name === "ConflictError") {
-      return res.sendStatus(httpStatus.FORBIDDEN);
+      return res.sendStatus(httpStatus.CONFLICT);
     }
     return res.sendStatus(httpStatus.NOT_FOUND);
   }

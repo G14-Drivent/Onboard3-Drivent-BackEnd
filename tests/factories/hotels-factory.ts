@@ -31,3 +31,13 @@ export async function createRemoteTicketType() {
     }
   });
 }
+
+export async function createRooms(hotelId: number) {
+  return prisma.room.create({
+    data: {
+      name: faker.name.findName(),
+      capacity: faker.datatype.number(),
+      hotelId: hotelId
+    }
+  });  
+}
