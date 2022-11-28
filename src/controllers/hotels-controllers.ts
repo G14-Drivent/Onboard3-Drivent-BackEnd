@@ -11,8 +11,8 @@ export async function getHotels(req: AuthenticatedRequest, res: Response) {
 
     return res.status(httpStatus.OK).send(hotels);
   } catch (error) {
-    if (error.name === "UnauthorizedError") {
-      return res.sendStatus(httpStatus.UNAUTHORIZED);
+    if (error.name === "ConflictError") {
+      return res.sendStatus(httpStatus.CONFLICT);
     }
     return res.sendStatus(httpStatus.NOT_FOUND);
   }
@@ -27,8 +27,8 @@ export async function getHotelRooms(req: AuthenticatedRequest, res: Response) {
 
     return res.status(httpStatus.OK).send(hotel);
   } catch (error) {
-    if (error.name === "UnauthorizedError") {
-      return res.sendStatus(httpStatus.UNAUTHORIZED);
+    if (error.name === "ConflictError") {
+      return res.sendStatus(httpStatus.FORBIDDEN);
     }
     return res.sendStatus(httpStatus.NOT_FOUND);
   }

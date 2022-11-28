@@ -1,4 +1,4 @@
-import { notFoundError, unauthorizedError } from "@/errors";
+import { conflictError, notFoundError } from "@/errors";
 import hotelsRepository from "@/repositories/hotels-repository";
 import ticketService from "../tickets-service";
 
@@ -8,7 +8,7 @@ async function hasHotelTicket(userId: number) {
     throw notFoundError();
   }
   if(ticket.TicketType.isRemote || !ticket.TicketType.includesHotel || ticket.status !== "PAID") {
-    throw unauthorizedError();
+    throw conflictError("invalid ticket");
   }
   return true;
 }
